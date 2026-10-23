@@ -1,0 +1,9 @@
+
+classroom_id,day,start_time,end_time,subject,expected_students
+C101,Friday,09:00,10:00,Computer Networks,35
+C102,Friday,10:00,11:00,Artificial Intelligence,25
+C201,Friday,11:00,12:00,Machine Learning,50
+C202,Friday,12:00,13:00,Data Science,40
+C301,Friday,14:00,15:00,Python Programming,45
+C302,Friday,15:00,16:00,Computer Lab,30
+C401,Friday,16:00,17:00,Practical Session,20

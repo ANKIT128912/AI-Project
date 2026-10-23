@@ -1,0 +1,9 @@
+
+classroom_id,building,floor,capacity,classroom_type,accessible,current_occupancy
+C101,Block A,1,40,Classroom,True,0
+C102,Block A,1,30,Classroom,True,0
+C201,Block A,2,60,Lab,False,0
+C202,Block A,2,45,Classroom,True,0
+C301,Block B,3,50,Classroom,True,0
+C302,Block B,3,35,Lab,True,0
+C401,Block C,1,25,Classroom,True,0
