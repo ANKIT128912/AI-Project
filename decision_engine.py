@@ -1,8 +1,30 @@
 
+import sqlite3
 from timetable import get_class_status, load_classrooms
 
+DATABASE_PATH = "data/classroom.db"
 
-def evaluate_classroom(classroom_id, detected_count):
+
+def get_latest_occupancy(classroom_id):
+    with sqlite3.connect(DATABASE_PATH) as connection:
+        cursor = connection.execute(
+            """
+            SELECT student_count
+            FROM occupancy_history
+            WHERE classroom_id = ?
+            ORDER BY id DESC
+            LIMIT 1
+            """,
+            (classroom_id,)
+        )
+        result = cursor.fetchone()
+
+    return result[0] if result else 0
+
+
+def evaluate_classroom(classroom_id):
+    detected_count = get_latest_occupancy(classroom_id)
+
     classrooms = load_classrooms()
     room = classrooms[
         classrooms["classroom_id"] == classroom_id
@@ -41,10 +63,4 @@ def evaluate_classroom(classroom_id, detected_count):
 
 
 if __name__ == "__main__":
-    # Test values only; these are not live detections.
-    for room_id, count in [
-        ("C101", 25),
-        ("C201", 65),
-        ("C301", 10)
-    ]:
-        print(evaluate_classroom(room_id, count))
+    print(evaluate_classroom("C101"))

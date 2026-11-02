@@ -5,8 +5,8 @@ from ultralytics import YOLO
 from occupancy_memory import initialize_database, save_occupancy
 
 VIDEO_PATH = "videos/sectionK.mp4"
-CLASSROOM_ID = "CLASS-101"
-SAVE_INTERVAL = 5  # Save one observation every 5 seconds
+CLASSROOM_ID = "C101"
+SAVE_INTERVAL = 5
 
 
 def detect_people():
@@ -40,7 +40,6 @@ def detect_people():
 
             current_time = time.time()
 
-            # Save actual detections every 5 seconds
             if current_time - last_saved >= SAVE_INTERVAL:
                 save_occupancy(CLASSROOM_ID, people_count)
                 print(f"Saved occupancy: {people_count}")
