@@ -54,10 +54,11 @@ def recommend_room(
             continue
 
         try:
-            distance = nx.shortest_path_length(
+            distance = nx.astar_path_length(
                 graph,
                 source=current_room,
                 target=room_id,
+                heuristic=lambda u, v: 0,
                 weight="weight"
             )
         except nx.NetworkXNoPath:
