@@ -33,8 +33,7 @@ def detect_people():
             results = model(frame, verbose=False)
 
             people_count = sum(
-                1
-                for box in results[0].boxes
+                1 for box in results[0].boxes
                 if int(box.cls[0]) == 0
             )
 
